@@ -11,3 +11,6 @@
   --font-inter: var(--font-inter);
 }
 
+body {
+  box-sizing: border-box;
+}
