@@ -3,12 +3,24 @@
 :root {
   --blueColor: #89e3fa;
   --purpleColor: #5c0ac7;
+  --greenColor: #38f251;
+  --greenBg: rgba(56, 242, 81, 0.2);
+  --pinkColor: #faa5ce;
+  --pinkBg: rgba(250, 165, 206, 0.2);
+  --lightPurpleColor: #d2a5fa;
+  --lightPurpleBg: rgba(210, 165, 250, 0.2);
 }
 
 @theme inline {
   --color-blue: var(--blueColor);
   --color-purple: var(--purpleColor);
   --font-inter: var(--font-inter);
+  --color-customGreen: var(--greenColor);
+  --color-customBgGreen: var(--greenBg);
+  --color-customPink: var(--pinkColor);
+  --color-customBgPink: var(--pinkBg);
+  --color-customPurple: var(--lightPurpleColor);
+  --color-customBgPurple: var(--lightPurpleBg);
 }
 
 body {
