@@ -1,11 +1,12 @@
 import React from 'react'
+import AuthButton from './AuthButton'
 
 const Menu = () => {
   return (
-    <div>
+    <div className='hidden md:block'>
         <div></div>
         <div>
-            menu
+            <AuthButton/>
         </div>
     </div>
   )

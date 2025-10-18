@@ -16,8 +16,8 @@ const Banner = () => {
       className="absolute inset-0 z-0"
       style={{
       backgroundImage: `
-        linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px)
+        linear-gradient(to right, rgba(255, 255, 255, 0.2) 0.5px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0.5px, transparent 1px)
       `,
       backgroundSize: "50px 50px",
       WebkitMaskImage:
@@ -47,8 +47,8 @@ const Banner = () => {
         {/***CTA Button***/}
         <div className='px-12 md:flex justify-center items-center gap-4'>
           <CTAButton className='bg-white text-black hover:bg-white/95
-          mb-6 md:mb-0' label='Start Calculating' href='' icon={BsCalculator}/>
-          <CTAButton className='bg-white/7 backdrop-blur-md hover:bg-white/10' label='Track Crypto' href='' icon={GrLineChart}/>
+          mb-6 md:mb-0' label='Start Calculating' href='/calculator' icon={BsCalculator}/>
+          <CTAButton className='bg-white/7 backdrop-blur-md hover:bg-white/10' label='Track Cryptos' href='/market' icon={GrLineChart}/>
         </div>
 
         {/**Benefit section **/}

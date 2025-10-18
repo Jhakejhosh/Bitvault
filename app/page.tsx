@@ -5,7 +5,6 @@ import Navbar from "./ui/Navbar";
 export default function Home() {
   return (
     <div className="font-inter">
-      <Navbar/>
       <Banner/>
     </div>
   );
