@@ -17,7 +17,7 @@ const Navbar = () => {
         <nav className='py-4 px-4 md:px-20 top-4 w-[85%] rounded-full flex justify-between items-center
         bg-white/2 backdrop-blur-md fixed'>
             <div className='md:hidden'>
-              <span className='text-white text-[20px]' onClick={()=>setShowNav(true)}>
+              <span className='text-white text-2xl' onClick={()=>setShowNav(true)}>
                 <HiBars3CenterLeft/>
               </span>
             </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
         </nav>
         {
           showNav && (
-          <div className='fixed w-full h-screen bg-black/80 backdrop-blur-md z-50 bottom-0 text-white
+          <div className='fixed w-full min-h-screen bg-black/80 backdrop-blur-md z-50 bottom-0 top-0 text-white
           md:hidden'>
             <div className='bg-black p-4 border-b-1 border-white/10 px-6'>
               <div className='flex justify-between items-center py-6'>

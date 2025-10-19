@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Calculator</div>
+    <div className='pt-26 md:pt-30 text-white relative'>Calculator</div>
   )
 }
 
