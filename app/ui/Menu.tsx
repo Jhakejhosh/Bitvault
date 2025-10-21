@@ -4,9 +4,10 @@ import Link from 'next/link'
 
 const Menu = () => {
   return (
-    <div className='hidden md:flex items-center'>
-        <div className='text-white'>
+    <div className='hidden md:flex items-center gap-8'>
+        <div className='text-white flex justify-center items-center gap-4'>
           <Link href='/market'>Market</Link>
+          <div>Tools</div>
         </div>
         <div>
             <AuthButton/>

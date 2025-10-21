@@ -47,7 +47,7 @@ const Banner = () => {
         {/***CTA Button***/}
         <div className='px-12 md:flex justify-center items-center gap-4'>
           <CTAButton className='bg-white text-black hover:bg-white/95
-          mb-6 md:mb-0' label='Start Calculating' href='/calculator' icon={BsCalculator}/>
+          mb-6 md:mb-0' label='Start Calculating' href='/position' icon={BsCalculator}/>
           <CTAButton className='bg-white/7 backdrop-blur-md hover:bg-white/10' label='Track Cryptos' href='/market' icon={GrLineChart}/>
         </div>
 

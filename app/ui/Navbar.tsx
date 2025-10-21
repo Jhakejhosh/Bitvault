@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import Logo from '../lib/Logo'
 import Menu from './Menu'
 import SocialLink from './SocialLink'
@@ -40,6 +41,10 @@ const Navbar = () => {
                 <AuthButton/>
               </div>
             </div>
+            <div className='text-white px-6 py-4'>
+              <Link href='/market' className='py-4'>Market</Link>
+              <div className='py-4'>Tools</div>
+           </div>
           </div>
          )
         }
