@@ -1,15 +1,13 @@
 import React from 'react'
 import AuthButton from './AuthButton'
-import Link from 'next/link'
+import NavMenu from './NavMenu';
 
-const Menu = () => {
+const Menu = ({closeNavbar}:any) => {
+
   return (
     <div className='hidden md:flex items-center gap-8'>
-        <div className='text-white flex justify-center items-center gap-4'>
-          <Link href='/market'>Market</Link>
-          <div>Tools</div>
-        </div>
-        <div>
+        <NavMenu/>
+        <div onClick={closeNavbar}>
             <AuthButton/>
         </div>
     </div>

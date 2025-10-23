@@ -8,10 +8,15 @@ import SocialLink from './SocialLink'
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import AuthButton from './AuthButton'
+import NavMenu from './NavMenu'
 
 const Navbar = () => {
 
   const[showNav, setShowNav] = useState<boolean>(false)
+
+  const closeNavbar = () => {
+    setShowNav(false)
+  }
 
   return (
     <div className='flex w-full justify-center items-center relative z-40'>
@@ -23,7 +28,7 @@ const Navbar = () => {
               </span>
             </div>
             <Logo/>
-            <Menu/>
+            <Menu closeNavbar={closeNavbar}/>
             <div className='md:hidden'>
               <SocialLink/>
             </div>
@@ -42,8 +47,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className='text-white px-6 py-4'>
-              <Link href='/market' className='py-4'>Market</Link>
-              <div className='py-4'>Tools</div>
+              <NavMenu closeNavbar={closeNavbar}/>
            </div>
           </div>
          )
