@@ -6,7 +6,7 @@ const layout = ({
     children: React.ReactNode
 }) => {
   return (
-    <div className="min-h-screen w-full relative bg-black">
+    <div className="min-h-screen w-full relative bg-black pb-4">
     {/* Violet Storm Background with Top Glow */}
     <div
       className="absolute inset-0 z-0"
