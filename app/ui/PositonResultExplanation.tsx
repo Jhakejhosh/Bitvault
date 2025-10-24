@@ -66,16 +66,16 @@ const PositonResultExplanation = () => {
                 inputValues.map(input => {
                     const {id, text, title, subHead, example, note} = input;
                     return (
-                        <div key={id}>
-                            <h1 className='text-[22px] font-bold'>{id}. {title}</h1>
-                            <i className='font-bold text-[18px] mt-2 mb-4'>"{subHead}"</i>
-                            <p className='text-gray-400'>{text}</p>
+                        <div key={id} className='pb-10'>
+                            <h1 className='text-[20px] md:text-[22px] font-bold py-2'>{id}. {title}</h1>
+                            <i className='font-semibold text-[16px] md:border-l-4 border-white/20 pl-2'>"{subHead}"</i>
+                            <p className='text-gray-400 pt-6'>{text}</p>
                             <div>
-                                <h1>Example:</h1>
+                                <h1 className='py-4 font-semibold'>Example:</h1>
                                 {
                                     example.map(e => {
                                         return(
-                                            <p className='flex items-center text-gray-400' key={e}>
+                                            <p className='flex items-center text-gray-400 pb-4' key={e}>
                                                 <span><PiDotOutline/></span>
                                                 {e}
                                             </p>
