@@ -57,11 +57,11 @@ const inputValues: InputValueType[] = [
     }
 ]
 
-const PositonResultExplanation = () => {
+const PositonInputExplanation = () => {
   return (
     <div className='lg:px-40 py-8'>
         <h1 className='text-2xl md:text-3xl'>Input Explanation</h1>
-        <div className='mt-8'>
+        <div className='mt-8 border-gray-700 border-b-1'>
             {
                 inputValues.map(input => {
                     const {id, text, title, subHead, example, note} = input;
@@ -93,4 +93,4 @@ const PositonResultExplanation = () => {
   )
 }
 
-export default PositonResultExplanation
+export default PositonInputExplanation

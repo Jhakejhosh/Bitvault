@@ -81,7 +81,7 @@ const NavMenu = ({closeNavbar}:any) => {
                   {
                     subLabel && (
                       <ul className={`absolute w-70 ${isOpen === label ? "block" : "hidden"} md:bg-white/5
-                      md:backdrop-blur-md p-4 mt-2 md:mt-8 rounded-md group-hover:block`}>
+                      md:backdrop-blur-md p-4 mt-2 md:mt-8 rounded-md group-hover:block z-50`}>
                         <h1 className='md:block hidden text-gray-400'>Calculators</h1>
                         {
                           subLabel.map(sub => {

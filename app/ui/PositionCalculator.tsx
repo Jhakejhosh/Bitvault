@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from "zod";
-import PositonResultExplanation from './PositonResultExplanation';
+import PositonInputExplanation from './PositonInputExplanation';
+import PositionResultExplanation from './PositionResultExplanation';
 
 const InputSchema = z.object(
         {
@@ -119,7 +120,8 @@ const PositionCalculator = () => {
                 </div>
             </div>
         </div>
-        <PositonResultExplanation/>
+        <PositonInputExplanation/>
+        <PositionResultExplanation/>
     </div>
   )
 }

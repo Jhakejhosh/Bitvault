@@ -33,8 +33,8 @@ const Banner = () => {
         <span className='text-[14px] bg-black flex justify-center
         rounded-full items-center gap-2 py-2 px-4'>
           <span className='text-yellow-700 text-[16px]'><BsLightningCharge/></span>
-          <p>Calculate position risk</p>
-          <Link href='/' className='text-[16px]'><HiArrowLongRight/></Link>
+          <p>Free Risk Management Course</p>
+          <Link href='/risk' className='text-[16px]'><HiArrowLongRight/></Link>
         </span>
       </div>
       <h1 className='font-bold text-[45px] md:text-[65px] lg:px-40
