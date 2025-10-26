@@ -35,9 +35,9 @@ const navMenu: NavMenuType[] = [
         link: "/profitsimulator"
       },
       {
-        label: "Win Rate Calculator",
-        text: "Calculate your win rate",
-        link: "/winrate"
+        label: "Risk Management Course",
+        text: "Learn about risk management",
+        link: "/risk"
       }
     ]
   }
