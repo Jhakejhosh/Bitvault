@@ -2,6 +2,8 @@ import React from 'react'
 import MarketPageHeadline from '../ui/MarketPageHeadline'
 import { global_url, GlobalCryptoTypes, options } from '../lib/FetchApi'
 
+export const dynamic = 'force-dynamic'
+
 const page = async() => {
 
    const data = await fetch(global_url, options);
