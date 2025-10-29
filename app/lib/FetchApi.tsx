@@ -32,7 +32,7 @@ export interface GlobalCryptoTypes {
     market_cap_change_percentage_24h_usd: number,
 }
 
-type Cache = { cache: 'force-cache' }
+type Cache = { cache: 'no-store' }
 
 interface RequestType {
     method: string,
@@ -44,5 +44,7 @@ interface RequestType {
 export const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';
 export const global_url = 'https://api.coingecko.com/api/v3/global'
 export const api_key = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
-const cache: Cache = {cache: "force-cache"}
+const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
+
+
