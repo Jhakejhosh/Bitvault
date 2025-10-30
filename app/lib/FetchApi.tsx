@@ -47,4 +47,49 @@ export const api_key = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
 const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
 
+export async function getGlobalData() {
+  // During build, skip real API
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+    return { 
+      active_cryptocurrencies: 0,
+    markets: 1,
+    total_market_cap: {
+      usd: 0
+    },
+    total_volume: {
+      usd: 0
+    },
+    market_cap_percentage: {
+      btc: 0,
+      eth: 0
+    },
+    market_cap_change_percentage_24h_usd: 0,
+    };
+  }
+
+  const res = await fetch(global_url);
+  const text = await res.text();
+
+  try {
+    const globalData = JSON.parse(text)
+    const global: GlobalCryptoTypes = globalData.data
+    return global;
+  } catch {
+    return { 
+    active_cryptocurrencies: 0,
+    markets: 1,
+    total_market_cap: {
+      usd: 0
+    },
+    total_volume: {
+      usd: 0
+    },
+    market_cap_percentage: {
+      btc: 0,
+      eth: 0
+    },
+    market_cap_change_percentage_24h_usd: 0,
+     };
+  }
+}
 

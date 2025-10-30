@@ -1,13 +1,17 @@
 import React from 'react'
-import { global_url, GlobalCryptoTypes, options } from '../lib/FetchApi'
+import { getGlobalData, global_url, GlobalCryptoTypes, options } from '../lib/FetchApi'
 import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from "react-icons/md";
 
-const MarketPageHeadline = ({global}:any) => {
+export const revalidate = 60;
+
+const MarketPageHeadline = async() => {
+
+  const global = await getGlobalData()
 
   //const data = await fetch(global_url, options);
   //const text = await data.text();
   //const globalData = JSON.parse(text)
- // const global: GlobalCryptoTypes = globalData.data
+  //const global: GlobalCryptoTypes = globalData.data
 
   const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
 
