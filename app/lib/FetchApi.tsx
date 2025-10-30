@@ -8,11 +8,8 @@ export interface CryptoTypes {
     current_price: number,
     market_cap: number,
     market_cap_rank: number,
-    fully_diluted_valuation: number,
     total_volume: number,
-    high_24h: number,
-    low_24h: number,
-    price_change_24h: number,
+    price_change_percentage_24h: number,
 
 }
 
@@ -47,6 +44,7 @@ export const api_key = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
 const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
 
+//API FOR GLOBAL MARKET DATA
 export async function getGlobalData() {
   // During build, skip real API
   if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
@@ -67,7 +65,7 @@ export async function getGlobalData() {
     };
   }
 
-  const res = await fetch(global_url);
+  const res = await fetch(global_url, options);
   const text = await res.text();
 
   try {
@@ -89,6 +87,55 @@ export async function getGlobalData() {
       eth: 0
     },
     market_cap_change_percentage_24h_usd: 0,
+     };
+  }
+}
+
+
+//API FOR COINS DATA
+export async function getCryptoData() {
+
+  const crypto: CryptoTypes[] = [
+    {
+    id: 'bitcoin',
+    symbol: "bitcoin",
+    name: "bitcoin",
+    image: "bitcoin",
+    current_price: 0,
+    market_cap: 0,
+    market_cap_rank: 1,
+    total_volume: 0,
+    price_change_percentage_24h: 0,
+    },
+    {
+    id: 'ethereum',
+    symbol: "ethereum",
+    name: "Ethereum",
+    image: "ethereum",
+    current_price: 0,
+    market_cap: 0,
+    market_cap_rank: 1,
+    total_volume: 0,
+    price_change_percentage_24h: 0,
+    },
+  ]
+  // During build, skip real API
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+    return { 
+    crypto
+    };
+  }
+
+  const res = await fetch(url, options);
+  const text = await res.text();
+
+  try {
+    const cryptoData = JSON.parse(text)
+    const cryptos: CryptoTypes[] = cryptoData
+    return cryptos;
+  } catch {
+    return { 
+    crypto
      };
   }
 }

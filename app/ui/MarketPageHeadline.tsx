@@ -28,9 +28,9 @@ const MarketPageHeadline = async() => {
         <p className='text-gray-400
         py-2'>Track the real-time prices, market capitalization, and 24-hour trading volume for the top cryptocurrencies.🚀</p>
       </div>
-      <div className='lg:flex justify-between items-center gap-4 my-6'>
-        <div className='border-1 border-gray-700 rounded-[12px] py-6 px-4 w-full'>
-          <h2 className='text-[20px] font-semibold mb-2'>${market_cap}</h2>
+      <div className='flex flex-col lg:flex-row justify-between items-center gap-4 my-6'>
+        <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full'>
+          <h2 className='text-[20px] font-semibold mb-1'>${market_cap}</h2>
           <div className='text-gray-400 flex items-center gap-2'>
             Market Cap 
             <p className={`${cap_percent < 0 ? 'text-red-500' : 'text-green-500' } flex items-center`}>
@@ -40,28 +40,28 @@ const MarketPageHeadline = async() => {
           </div>
         </div>
 
-        <div className='border-1 border-gray-700 rounded-[12px] py-6 px-4 w-full'>
-          <h2 className='text-[20px] font-semibold mb-2'>${volume}</h2>
+        <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full'>
+          <h2 className='text-[20px] font-semibold mb-1'>${volume}</h2>
           <div className='text-gray-400 flex items-center gap-2'>
             24h Trading Volume
           </div>
         </div>
 
-        <div className='border-1 border-gray-700 rounded-[12px] py-6 px-4 w-full'>
-          <h2 className='text-[20px] font-semibold mb-2 flex gap-4'><p>BTC {btc}%</p>  ETH {eth}%</h2>
+        <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full'>
+          <h2 className='text-[20px] font-semibold mb-1 flex gap-4'><p>BTC {btc}%</p>  ETH {eth}%</h2>
           <div className='text-gray-400 flex items-center gap-2'>
             Dominance
           </div>
         </div>
 
-        <div className='border-1 border-gray-700 rounded-[12px] py-6 px-4 w-full'>
-          <h2 className='text-[20px] font-semibold mb-2'>${market_cap}</h2>
-          <div className='text-gray-400 flex items-center gap-2'>
-            Market Cap 
-            <p className={`${cap_percent < 0 ? 'text-red-500' : 'text-green-500' } flex items-center`}>
-              {cap_percent.toFixed(1)}%
-              <span>{cap_percent < 0 ? <MdOutlineArrowDropDown/> : <MdOutlineArrowDropUp/> }</span>
-            </p>
+        <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full flex justify-between items-center'>
+          <div>
+            <h1 className='text-[20px] font-semibold mb-1'>{active_cryptocurrencies.toLocaleString()}</h1>
+            <p className='text-gray-400 flex items-center gap-2'>Coins</p>
+          </div>
+          <div className='text-end'>
+            <h1 className='text-[20px] font-semibold mb-1'>{markets.toLocaleString()}</h1>
+            <p className='text-gray-400 flex items-center gap-2'>Exchanges</p>
           </div>
         </div>
 
