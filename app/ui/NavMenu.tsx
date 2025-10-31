@@ -32,7 +32,7 @@ const NavMenu = ({closeNavbar}:any) => {
 
   return (
     <div className='block md:flex items-center gap-8'>
-        <ul className='text-white block md:flex justify-center items-center gap-4'>
+        <ul className='text-white flex flex-col md:flex-row justify-center items-center gap-4'>
           {
             navMenu.map(nav => {
               const {id, label,link} = nav;

@@ -2,11 +2,12 @@ import React from 'react'
 import { CryptoTypes, getCryptoData } from '../lib/FetchApi';
 import Image from 'next/image';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import Link from 'next/link';
 
 export const revalidate = 60;
 
 const MarketPageCryptoPrices = async() => {
-  const cryptos: CryptoTypes[] = await getCryptoData();
+  const cryptos:CryptoTypes[] = await getCryptoData();
   return (
     <div className='relative md:px-30 lg:px-40'>
         <div className='overflow-x-auto'>
@@ -26,17 +27,18 @@ const MarketPageCryptoPrices = async() => {
                         cryptos?.map(crypto => {
                             const {id, market_cap, market_cap_rank, name, symbol, image, total_volume, price_change_percentage_24h, current_price} = crypto
                             return (
-                                <tr key={id} className='border-b-1 border-gray-800'>
+                                <tr className='border-b-1 border-gray-800' key={id}>
                                     <td className='py-6'>{market_cap_rank}</td>
-                                    <td className='py-6 flex gap-3 items-center px-4'>
+                                    <td>
+                                        <Link href='' className='py-6 flex gap-2 items-center px-4'>
                                         <Image src={image} width={30} alt={name} height={20}/>
                                         <span>{name}
-                                            <span className='text-gray-400 ml-2'>{symbol.toLocaleUpperCase()}</span>
-                                        </span>
+                                            <span className='text-gray-400 ml-1'>{symbol.toLocaleUpperCase()}</span>
+                                        </span></Link>
                                     </td>
                                     <td className='text-right px-4'>${current_price.toLocaleString()}</td>
                                     <td className={`text-right px-4 flex items-center justify-end
-                                        ${price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500' }`}>
+                                        ${price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500' } py-6`}>
                                         <span>{price_change_percentage_24h < 0 ? <IoMdArrowDropdown/> : <IoMdArrowDropup/> }</span>
                                         <span>{price_change_percentage_24h.toFixed(1)}%</span>
                                     </td>

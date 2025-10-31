@@ -91,11 +91,7 @@ export async function getGlobalData() {
   }
 }
 
-
-//API FOR COINS DATA
-export async function getCryptoData() {
-
-  const crypto: CryptoTypes[] = [
+const crypto: CryptoTypes[] = [
     {
     id: 'bitcoin',
     symbol: "bitcoin",
@@ -119,11 +115,14 @@ export async function getCryptoData() {
     price_change_percentage_24h: 0,
     },
   ]
+
+
+//API FOR COINS DATA
+export async function getCryptoData() {
+
   // During build, skip real API
   if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
-    return { 
-    crypto
-    };
+    return crypto
   }
 
   const res = await fetch(url, options);
@@ -134,9 +133,7 @@ export async function getCryptoData() {
     const cryptos: CryptoTypes[] = cryptoData
     return cryptos;
   } catch {
-    return { 
-    crypto
-     };
+    return crypto
   }
 }
 
