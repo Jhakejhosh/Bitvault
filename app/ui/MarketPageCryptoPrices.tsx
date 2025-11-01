@@ -30,8 +30,8 @@ const MarketPageCryptoPrices = async() => {
                                 <tr className='border-b-1 border-gray-800' key={id}>
                                     <td className='py-6'>{market_cap_rank}</td>
                                     <td>
-                                        <Link href='' className='py-6 flex gap-2 items-center px-4'>
-                                        <Image src={image} width={30} alt={name} height={20}/>
+                                        <Link href={`/market/${id}`} className='py-6 flex gap-2 items-center px-4'>
+                                        <Image src={image} width={30} alt={name}/>
                                         <span>{name}
                                             <span className='text-gray-400 ml-1'>{symbol.toLocaleUpperCase()}</span>
                                         </span></Link>
