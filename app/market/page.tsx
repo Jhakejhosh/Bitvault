@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 const page = async() => {
   
   return (
-    <div className='pt-26 md:pt-30 text-white relative px-4'>
+    <div className='pt-26 md:pt-30 text-white relative px-4 pb-12'>
       <MarketPageHeadline/>
       <MarketPageCryptoPrices/>
     </div>

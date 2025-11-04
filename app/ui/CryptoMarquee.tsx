@@ -1,0 +1,31 @@
+import React from 'react'
+import Marquee from 'react-fast-marquee'
+import { getCryptoData } from '../lib/FetchApi'
+
+const CryptoMarquee = async() => {
+
+    const cryptos = await getCryptoData()
+
+  return (
+    <>
+      <Marquee direction="right" speed={20} pauseOnHover>
+        {
+            cryptos?.map(crypto => {
+                const {id, symbol, price_change_percentage_24h, current_price} = crypto;
+                return (
+                    <div key={id} className='mx-4 flex items-center gap-2'>
+                        <p>{symbol.toLocaleUpperCase()}</p>
+                        <p className={`${price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500' }`}>
+                            {price_change_percentage_24h.toFixed(1)}%
+                        </p>
+                        <p className='text-gray-400'>{current_price}</p>
+                    </div>
+                )
+            })
+        }
+      </Marquee>
+    </>
+  )
+}
+
+export default CryptoMarquee

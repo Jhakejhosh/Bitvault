@@ -34,8 +34,8 @@ const risks: RiskType[] = [
 
 const page = () => {
   return (
-    <div className='pt-26 md:pt-30 text-white relative px-4 h-full md:px-36 lg:px-40'>
-        <div className='lg:px-40 py-4'>
+    <div className='pt-26 md:pt-30 text-white relative px-4 h-full md:px-36 lg:px-40 pb-10'>
+        <div className='lg:px-40 py-10'>
             <div className='md:border-b-1 border-gray-800 md:text-start text-center'>
                 <h1 className='font-bold text-4xl'>Risk Management In Crypto</h1>
                 <p className='py-6 md:text-[18px]'><i>The Complete Beginner's Guide</i></p>

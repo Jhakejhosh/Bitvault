@@ -13,6 +13,21 @@ export interface CryptoTypes {
 
 }
 
+//COIN ID TYPES
+export interface CoinIdTypes {
+  id: string,
+  symbol: string,
+  name: string,
+  market_cap_rank: number,
+  market_data: {
+    current_price: {
+      usd: number
+    }
+  },
+  price_change_percentage_24h: number,
+  
+}
+
 export interface GlobalCryptoTypes {
     active_cryptocurrencies: number,
     markets: number,

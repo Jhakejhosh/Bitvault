@@ -4,7 +4,7 @@ import React, { Suspense } from 'react'
 const page = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-    <div className='pt-26 md:pt-30 text-white relative px-4 h-full'>
+    <div className='pt-26 md:pt-30 text-white relative px-4 h-full pb-16'>
       <PositionCalculator/>
     </div>
     </Suspense>
