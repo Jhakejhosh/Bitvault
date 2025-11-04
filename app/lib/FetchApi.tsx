@@ -137,18 +137,18 @@ export async function getCryptoData() {
 
   // During build, skip real API
   if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
-    return crypto
+  return crypto
   }
 
   const res = await fetch(url, options);
   const text = await res.text();
 
-  try {
+ /* try {*/
     const cryptoData = JSON.parse(text)
     const cryptos: CryptoTypes[] = cryptoData
     return cryptos;
-  } catch {
-    return crypto
-  }
+  /*} catch {
+    return cryptos
+  }*/
 }
 
