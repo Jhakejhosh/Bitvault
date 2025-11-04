@@ -83,11 +83,11 @@ export async function getGlobalData() {
   const res = await fetch(global_url, options);
   const text = await res.text();
 
-  try {
+  /*try {*/
     const globalData = JSON.parse(text)
     const global: GlobalCryptoTypes = globalData.data
     return global;
-  } catch {
+  /*} catch {
     return { 
     active_cryptocurrencies: 0,
     markets: 1,
@@ -103,7 +103,7 @@ export async function getGlobalData() {
     },
     market_cap_change_percentage_24h_usd: 0,
      };
-  }
+  }*/
 }
 
 const crypto: CryptoTypes[] = [

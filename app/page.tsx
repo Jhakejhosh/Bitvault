@@ -4,7 +4,7 @@ import Navbar from "./ui/Navbar";
 
 export default function Home() {
   return (
-    <div className="font-inter pb-12">
+    <div className="font-inter">
       <Banner/>
     </div>
   );
