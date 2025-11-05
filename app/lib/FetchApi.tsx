@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 export interface CryptoTypes {
     id: string,
@@ -87,22 +87,8 @@ export async function getGlobalData() {
     const globalData = JSON.parse(text)
     const global: GlobalCryptoTypes = globalData.data
     return global;
-  } catch {
-    return { 
-    active_cryptocurrencies: 0,
-    markets: 1,
-    total_market_cap: {
-      usd: 0
-    },
-    total_volume: {
-      usd: 0
-    },
-    market_cap_percentage: {
-      btc: 0,
-      eth: 0
-    },
-    market_cap_change_percentage_24h_usd: 0,
-     };
+  } catch(error) {
+    console.log(error)
   }
 }
 
@@ -136,9 +122,9 @@ const crypto: CryptoTypes[] = [
 export async function getCryptoData() {
 
   // During build, skip real API
-  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+  /**if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
   return crypto
-  }
+  }**/
 
   const res = await fetch(url, options);
   const text = await res.text();
@@ -147,8 +133,9 @@ export async function getCryptoData() {
     const cryptoData = JSON.parse(text)
     const cryptos: CryptoTypes[] = cryptoData
     return cryptos;
-  } catch {
-    return crypto
+  } catch(error) {
+    console.log(error)
   }
+  
 }
 

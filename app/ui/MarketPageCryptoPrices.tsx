@@ -1,5 +1,7 @@
+
+
 import React from 'react'
-import { CryptoTypes, getCryptoData } from '../lib/FetchApi';
+import { CryptoTypes, getCryptoData, options, url } from '../lib/FetchApi';
 import Image from 'next/image';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import Link from 'next/link';
@@ -7,7 +9,37 @@ import Link from 'next/link';
 export const revalidate = 60;
 
 const MarketPageCryptoPrices = async() => {
-  const cryptos:CryptoTypes[] = await getCryptoData();
+
+    const cryptos = await getCryptoData();
+
+  /**const [data, setData] = useState<CryptoTypes[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+    useEffect(() => {
+    async function fetchCryptoData() {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          url,
+          options
+        );
+        if (!response.ok) throw new Error('API error');
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch');
+      } finally {
+        setLoading(false);
+      }
+    }
+        fetchCryptoData()
+    }, [data])
+
+    if (loading) return <div>Loading prices...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  console.log(data)**/
+
   return (
     <div className='relative md:px-30 lg:px-40'>
         <div className='overflow-x-auto'>

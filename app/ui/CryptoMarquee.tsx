@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import Marquee from 'react-fast-marquee'
 import { getCryptoData } from '../lib/FetchApi'

@@ -1,6 +1,8 @@
 import React from 'react'
 import CryptoMarquee from './CryptoMarquee'
 
+export const revalidate = 60;
+
 const Footer = () => {
   return (
     <div className='fixed right-0 bottom-0 w-full z-50 text-white/80
