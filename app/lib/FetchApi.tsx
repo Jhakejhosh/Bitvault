@@ -62,7 +62,7 @@ export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, 
 //API FOR GLOBAL MARKET DATA
 export async function getGlobalData() {
   // During build, skip real API
-  /**if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
     return { 
       active_cryptocurrencies: 0,
     markets: 1,
@@ -78,7 +78,7 @@ export async function getGlobalData() {
     },
     market_cap_change_percentage_24h_usd: 0,
     };
-  }**/
+  }
 
   try {
      const res = await fetch(global_url, options);
