@@ -3,7 +3,7 @@ import { benefits } from '@/public/data/data'
 
 const BenefitCard = () => {
   return (
-    <div className='md:flex justify-center items-center text-start gap-4 pt-10'>
+    <div className='md:flex justify-center items-center text-start gap-4 pt-10 pb-12'>
         {
             benefits.map(benefit => {
                 const {id, icon, heading, text, color, bg} = benefit;

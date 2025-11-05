@@ -4,6 +4,8 @@ import React from 'react'
 import Marquee from 'react-fast-marquee'
 import { getCryptoData } from '../lib/FetchApi'
 
+export const revalidate = 60;
+
 const CryptoMarquee = async() => {
 
     const cryptos = await getCryptoData()

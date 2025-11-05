@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import { getGlobalData, global_url, GlobalCryptoTypes, options } from '../lib/FetchApi'
 import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from "react-icons/md";
@@ -6,6 +8,10 @@ export const revalidate = 60;
 
 const MarketPageHeadline = async() => {
 
+  //const [global, setData] = useState<GlobalCryptoTypes | null>(null);
+  //const [loading, setLoading] = useState(true);
+  //const [error, setError] = useState<string | null>(null);
+
   const global: GlobalCryptoTypes = await getGlobalData()
 
   //const data = await fetch(global_url, options);
@@ -13,8 +19,30 @@ const MarketPageHeadline = async() => {
   //const globalData = JSON.parse(text)
   //const global: GlobalCryptoTypes = globalData.data
 
+  /**useEffect(() => {
+    async function fetchCoinData() {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          global_url,
+          options
+        );
+        if (!response.ok) throw new Error('API error');
+        const result = await response.json();
+        const data = result.data
+        setData(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch');
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
+    fetchCoinData();
+  }, []);**/
+
+
+  const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
     
   const market_cap = Math.floor(total_market_cap.usd).toLocaleString();
   const volume = Math.floor(total_volume.usd).toLocaleString();
