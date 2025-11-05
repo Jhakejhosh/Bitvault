@@ -13,8 +13,9 @@ const MarketPageHeadline = async() => {
   //const globalData = JSON.parse(text)
   //const global: GlobalCryptoTypes = globalData.data
 
-  const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
 
+    const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
+    
   const market_cap = Math.floor(total_market_cap.usd).toLocaleString();
   const volume = Math.floor(total_volume.usd).toLocaleString();
   const btc = market_cap_percentage.btc.toFixed(1)
