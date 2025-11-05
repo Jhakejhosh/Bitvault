@@ -6,7 +6,7 @@ export const revalidate = 60;
 
 const MarketPageHeadline = async() => {
 
-  const global = await getGlobalData()
+  const global: GlobalCryptoTypes = await getGlobalData()
 
   //const data = await fetch(global_url, options);
   //const text = await data.text();

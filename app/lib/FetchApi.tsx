@@ -87,8 +87,22 @@ export async function getGlobalData() {
     const globalData = JSON.parse(text)
     const global: GlobalCryptoTypes = globalData.data
     return global;
-  } catch(error) {
-    console.log(error)
+  } catch {
+    return { 
+    active_cryptocurrencies: 0,
+    markets: 1,
+    total_market_cap: {
+      usd: 0
+    },
+    total_volume: {
+      usd: 0
+    },
+    market_cap_percentage: {
+      btc: 0,
+      eth: 0
+    },
+    market_cap_change_percentage_24h_usd: 0,
+     };
   }
 }
 
