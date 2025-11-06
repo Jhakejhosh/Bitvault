@@ -49,6 +49,7 @@ export interface CoinIdTypes {
 }
 
 export interface GlobalCryptoTypes {
+    data: {
     active_cryptocurrencies: number,
     markets: number,
     total_market_cap: {
@@ -62,6 +63,7 @@ export interface GlobalCryptoTypes {
       eth: number
     }
     market_cap_change_percentage_24h_usd: number,
+    }
 }
 
 type Cache = { cache: 'no-store' }
@@ -81,32 +83,10 @@ export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, 
 
 //API FOR GLOBAL MARKET DATA
 export async function getGlobalData() {
-  // During build, skip real API
-  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
-    return { 
-    active_cryptocurrencies: 0,
-    markets: 1,
-    total_market_cap: {
-      usd: 0
-    },
-    total_volume: {
-      usd: 0
-    },
-    market_cap_percentage: {
-      btc: 0,
-      eth: 0
-    },
-    market_cap_change_percentage_24h_usd: 0,
-    };
-  }
 
-  try {
-     const res = await fetch(global_url, options);
-    const globalData = await res.json();
-    return globalData.data;
-  } catch {
-    return {
-    active_cryptocurrencies: 0,
+  const global_data = {
+    data: {
+       active_cryptocurrencies: 0,
     markets: 1,
     total_market_cap: {
       usd: 0
@@ -121,7 +101,19 @@ export async function getGlobalData() {
     market_cap_change_percentage_24h_usd: 0,
     }
   }
+  // During build, skip real API
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+    return global_data
+  }
+  try {
+     const res = await fetch(global_url, options);
+    const globalData:GlobalCryptoTypes = await res.json();
+    return globalData;
+  } catch {
+    return global_data
+  }
 }
+
 
 const crypto: CryptoTypes[] = [
     {

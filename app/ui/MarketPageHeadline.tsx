@@ -42,13 +42,13 @@ const MarketPageHeadline = async() => {
   }, []);**/
 
 
-  const {active_cryptocurrencies, total_market_cap, market_cap_change_percentage_24h_usd, markets, market_cap_percentage, total_volume} = global;
+  
     
-  const market_cap = Math.floor(total_market_cap.usd).toLocaleString();
-  const volume = Math.floor(total_volume.usd).toLocaleString();
-  const btc = market_cap_percentage.btc.toFixed(1)
-  const eth = market_cap_percentage.eth.toFixed(1)
-  const cap_percent = market_cap_change_percentage_24h_usd
+  const market_cap = Math.floor(global.data.total_market_cap.usd).toLocaleString();
+  const volume = Math.floor(global.data.total_volume.usd).toLocaleString();
+  const btc = global.data.market_cap_percentage.btc.toFixed(1)
+  const eth = global.data.market_cap_percentage.eth.toFixed(1)
+  const cap_percent = global.data.market_cap_change_percentage_24h_usd
 
   return (
     <div className='relative md:px-30 lg:px-40'>
@@ -85,11 +85,11 @@ const MarketPageHeadline = async() => {
 
         <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full flex justify-between items-center'>
           <div>
-            <h1 className='text-[20px] font-semibold mb-1'>{active_cryptocurrencies.toLocaleString()}</h1>
+            <h1 className='text-[20px] font-semibold mb-1'>{global.data.active_cryptocurrencies.toLocaleString()}</h1>
             <p className='text-gray-400 flex items-center gap-2'>Coins</p>
           </div>
           <div className='text-end'>
-            <h1 className='text-[20px] font-semibold mb-1'>{markets.toLocaleString()}</h1>
+            <h1 className='text-[20px] font-semibold mb-1'>{global.data.markets.toLocaleString()}</h1>
             <p className='text-gray-400 flex items-center gap-2'>Exchanges</p>
           </div>
         </div>
