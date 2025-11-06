@@ -41,7 +41,10 @@ const MarketPageHeadline = async() => {
     fetchCoinData();
   }, []);**/
 
-
+  if (!global) {
+    return global
+  }
+  console.log(global)
   
     
   const market_cap = Math.floor(global.data.total_market_cap.usd).toLocaleString();

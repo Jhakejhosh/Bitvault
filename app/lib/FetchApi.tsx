@@ -86,7 +86,7 @@ export async function getGlobalData() {
 
   const global_data = {
     data: {
-       active_cryptocurrencies: 0,
+    active_cryptocurrencies: 0,
     markets: 1,
     total_market_cap: {
       usd: 0
