@@ -1,4 +1,6 @@
+import { getCryptoId } from '@/app/lib/FetchApi'
 import Chart from '@/app/ui/Chart'
+import Image from 'next/image'
 import React from 'react'
 
 const page = async({params,}:{
@@ -6,13 +8,107 @@ const page = async({params,}:{
 }) => {
 
     const { cryptoId } = await params
-    console.log(cryptoId)
+    const crypto_id = await getCryptoId(cryptoId)
+
+    if(!crypto_id) {
+      return crypto_id
+    }
+    
+    const price = Math.floor(crypto_id.market_data.current_price.usd).toLocaleString();
+    const percent = crypto_id.market_data.market_cap_change_percentage_24h;
+    const high = crypto_id.market_data.high_24h.usd.toLocaleString()
+    const low = crypto_id.market_data.low_24h.usd.toLocaleString()
+    const market_cap =  Math.floor(crypto_id.market_data.market_cap.usd).toLocaleString()
+    const total_volume =  Math.floor(crypto_id.market_data.total_volume.usd).toLocaleString()
+    const valuation =  Math.floor(crypto_id.market_data.fully_diluted_valuation.usd).toLocaleString()
+    const circulate =  Math.floor(crypto_id.market_data.circulating_supply).toLocaleString()
+    const total =  Math.floor(crypto_id.market_data.total_supply).toLocaleString()
+    const max =  Math.floor(crypto_id.market_data.max_supply).toLocaleString()
+    
 
   return (
-    <div className='pt-26 md:pt-30 text-white relative px-4 pb-12'>
-      <div>
+    <div className='pt-26 md:pt-30 text-white relative px-4 pb-12 md:px-30 lg:px-40'>
+      <div>{crypto_id?.name}</div>
+      <div className='flex justify-center items-center'>
+        <div className='md:bg-black/2 md:border-1 border-gray-700 md:gap-4 gap-8
+          rounded-md flex justify-between items-center-safe py-2 px-2 md:flex-row flex-col'>
+          <div className='flex gap-2 items-center md:border-r-2 md:border-gray-700 px-4'>
+            <figure>
+              <Image src={crypto_id.image.small} width={30} alt={crypto_id.name} height={20}/>
+            </figure>
+            <div>
+              <h1 className='flex items-center text-[20px] font-semibold
+              gap-1'>{crypto_id.name}<p className='text-gray-400'>{crypto_id.symbol.toLocaleUpperCase()}</p></h1>
+              <p>${price}</p>
+            </div>
+          </div>
+          <div className=''>
+          <div className='flex justify-between items-center lg:gap-20 gap-5 lg:px-4'>
+            <div className='text-[12px]'>
+              <p className='text-gray-500 font-semibold'>24h Change</p>
+              <p className={`${percent < 0 ? 'text-red-500' : 'text-green-500' } text-end pt-2`}>
+                {percent?.toFixed(2)}%
+              </p>
+            </div>
+            <div className='text-[12px]'>
+              <p className='text-gray-500 font-semibold'>24h High</p>
+              <p className='text-end pt-2'>
+                {high&&high}
+              </p>
+            </div>
+            <div className='text-[12px]'>
+              <p className='text-gray-500 font-semibold'>24h Low</p>
+              <p className='text-end pt-2'>
+                {low}
+              </p>
+            </div>
+            <div className='text-[12px]'>
+              <p className='text-gray-500 font-semibold'>24h Volume</p>
+              <p className={`${percent < 0 ? 'text-red-500' : 'text-green-500' } text-end pt-2`}>
+                {percent?.toFixed(2)}%
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>
         
-        <Chart/>
+      </div>
+      <div className='flex md:flex-row flex-col justify-between gap-6 py-8'>
+        <div className='w-full md:w-[75%] lg:w-[70%] md:border-1 border-gray-700 rounded-md lg:px-4 py-4 md:px-2'>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           border-b-1 border-gray-700 py-4'>
+            <p className='text-gray-400'>Market Cap</p>
+            <p className='text-right'>${market_cap}</p>
+          </div>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           border-b-1 border-gray-700 py-4'>
+            <p className='text-gray-400'>Fully Diluted Valuation</p>
+            <p className='text-right'>${valuation}</p>
+          </div>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           border-b-1 border-gray-700 py-4'>
+            <p className='text-gray-400'>24h Trading Volume</p>
+            <p className='text-right'>${total_volume}</p>
+          </div>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           border-b-1 border-gray-700 py-4'>
+            <p className='text-gray-400'>Circulating Supply</p>
+            <p className='text-right'>${circulate}</p>
+          </div>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           border-b-1 border-gray-700 py-4'>
+            <p className='text-gray-400'>Total supply</p>
+            <p className='text-right'>${total}</p>
+          </div>
+          <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
+           py-4'>
+            <p className='text-gray-400'>Max Supply</p>
+            <p className='text-right'>${max}</p>
+          </div>
+        </div>
+        <div className='w-full'>
+          <Chart/>
+        </div>
       </div>
       <div></div>
     </div>

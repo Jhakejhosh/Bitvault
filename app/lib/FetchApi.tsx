@@ -22,10 +22,30 @@ export interface CoinIdTypes {
   market_data: {
     current_price: {
       usd: number
-    }
+    },
+    market_cap_change_percentage_24h: number,
+    high_24h: {
+      usd: number
+    },
+    low_24h: {
+      usd: number
+    },
+    market_cap: {
+      usd: number
+    },
+    fully_diluted_valuation: {
+      usd: number
+    }, 
+    total_volume: {
+      usd: number
+    },
+    total_supply: number,
+    max_supply: number,
+    circulating_supply: number
   },
-  price_change_percentage_24h: number,
-  
+  image:{
+    small: string
+  }
 }
 
 export interface GlobalCryptoTypes {
@@ -54,7 +74,7 @@ interface RequestType {
 
 
 export const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';
-export const global_url = 'https://api.coingecko.com/api/v3/global'
+export const global_url = 'https://api.coingecko.com/api/v3/global';
 export const api_key = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
 const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
@@ -64,7 +84,7 @@ export async function getGlobalData() {
   // During build, skip real API
   if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
     return { 
-      active_cryptocurrencies: 0,
+    active_cryptocurrencies: 0,
     markets: 1,
     total_market_cap: {
       usd: 0
@@ -84,8 +104,22 @@ export async function getGlobalData() {
      const res = await fetch(global_url, options);
     const globalData = await res.json();
     return globalData.data;
-  } catch(error) {
-    console.log(error)
+  } catch {
+    return {
+    active_cryptocurrencies: 0,
+    markets: 1,
+    total_market_cap: {
+      usd: 0
+    },
+    total_volume: {
+      usd: 0
+    },
+    market_cap_percentage: {
+      btc: 0,
+      eth: 0
+    },
+    market_cap_change_percentage_24h_usd: 0,
+    }
   }
 }
 
@@ -134,5 +168,17 @@ export async function getCryptoData() {
     console.log(error)
   }
   
+}
+
+//FETCH CRYPTO ID DATA
+export async function getCryptoId(id: string) {
+  const crypto_id_url = `https://api.coingecko.com/api/v3/coins/${id}`;
+  try {
+     const response = await fetch(crypto_id_url, options);
+     const data: CoinIdTypes = await response.json();
+     return data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
