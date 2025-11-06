@@ -88,7 +88,7 @@ const MarketPageHeadline = async() => {
 
         <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full flex justify-between items-center'>
           <div>
-            <h1 className='text-[20px] font-semibold mb-1'>{global.data.active_cryptocurrencies.toLocaleString()}</h1>
+            {/**<h1 className='text-[20px] font-semibold mb-1'>{global.data.active_cryptocurrencies.toLocaleString()}</h1>**/}
             <p className='text-gray-400 flex items-center gap-2'>Coins</p>
           </div>
           <div className='text-end'>
