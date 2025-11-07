@@ -57,11 +57,11 @@ const MarketPageHeadline = async() => {
 
   return (
     <div className='relative md:px-30 lg:px-40'>
-      <div className='text-center'>
-        <h1 className='text-2xl font-semibold md:text-3xl'>Cryptocurrency Prices by Market Cap</h1>
-        <p className='text-gray-400
+      
+        <h1 className='text-2xl font-semibold md:text-3xl text-center'>Cryptocurrency Prices by Market Cap</h1>
+        <p className='text-gray-400 text-center
         py-2'>Track the real-time prices, market capitalization, and 24-hour trading volume for the top cryptocurrencies.🚀</p>
-      </div>
+      
       <div className='flex flex-col lg:flex-row justify-between items-center gap-4 my-6'>
         <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full'>
           <h2 className='text-[20px] font-semibold mb-1'>${market_cap}</h2>

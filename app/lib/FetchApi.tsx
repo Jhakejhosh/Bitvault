@@ -116,18 +116,26 @@ export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, 
 
 
 export async function getGlobalData() {
-  const res = await fetch(global_url, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(
+    global_url,
+    {
+      next: { revalidate: 60 },
+      headers: {
+        'Accept': 'application/json',
+        // Optional: use a free API key (sign up in 10 sec)
+        'x-cg-demo-api-key': api_key,
+      },
+    }
+  );
 
+  // ← ADD THIS CHECK
   if (!res.ok) {
-    console.error('CoinGecko global API error:', res.status);
-    return null; // fallback UI below
+    const text = await res.text();
+    console.error('CoinGecko error:', res.status, text.slice(0, 200));
+    return []; // or throw, or return fallback data
   }
 
-  const data = await res.json();
-  return data
-  //return json.data.active_cryptocurrencies as number;
+  return res.json();
 }
 
 
