@@ -145,19 +145,20 @@ const crypto: CryptoTypes[] = [
 export async function getCryptoData() {
 
   // During build, skip real API
-  /**if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
   return crypto
-  }**/
+  }
 
-  const res = await fetch(url, options);
-  const text = await res.text();
+  
 
   try {
+    const res = await fetch(url, options);
+    const text = await res.text();
     const cryptoData = JSON.parse(text)
     const cryptos: CryptoTypes[] = cryptoData
     return cryptos;
-  } catch(error) {
-    console.log(error)
+  } catch {
+    return crypto
   }
   
 }
