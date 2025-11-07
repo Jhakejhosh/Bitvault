@@ -6,20 +6,20 @@ import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from "react-icons/md";
 
 export const revalidate = 60;
 
-const MarketPageHeadline = async() => {
+const MarketPageHeadline = () => {
 
   //const [global, setData] = useState<GlobalCryptoTypes | null>(null);
   //const [loading, setLoading] = useState(true);
   //const [error, setError] = useState<string | null>(null);
 
-  const global: GlobalCryptoTypes = await getGlobalData()
+  //const global: GlobalCryptoTypes = await getGlobalData()
 
   //const data = await fetch(global_url, options);
   //const text = await data.text();
   //const globalData = JSON.parse(text)
   //const global: GlobalCryptoTypes = globalData.data
 
-  /**useEffect(() => {
+  {/**useEffect(() => {
     async function fetchCoinData() {
       try {
         setLoading(true);
@@ -39,7 +39,7 @@ const MarketPageHeadline = async() => {
     }
 
     fetchCoinData();
-  }, []);**/
+  }, []);
 
   if (!global) {
     return global
@@ -53,7 +53,7 @@ const MarketPageHeadline = async() => {
   const volume = Math.floor(global.data.total_volume.usd).toLocaleString();
   const btc = global.data.market_cap_percentage.btc.toFixed(1)
   const eth = global.data.market_cap_percentage.eth.toFixed(1)
-  const cap_percent = global.data.market_cap_change_percentage_24h_usd
+  const cap_percent = global.data.market_cap_change_percentage_24h_usd**/}
 
   return (
     <div className='relative md:px-30 lg:px-40'>
@@ -62,7 +62,7 @@ const MarketPageHeadline = async() => {
         <p className='text-gray-400 text-center
         py-2'>Track the real-time prices, market capitalization, and 24-hour trading volume for the top cryptocurrencies.🚀</p>
       
-      <div className='flex flex-col lg:flex-row justify-between items-center gap-4 my-6'>
+      {/**<div className='flex flex-col lg:flex-row justify-between items-center gap-4 my-6'>
         <div className='border-1 border-gray-700 rounded-[12px] py-4 md:py-6 px-4 w-full'>
           <h2 className='text-[20px] font-semibold mb-1'>${market_cap}</h2>
           <div className='text-gray-400 flex items-center gap-2'>
@@ -99,7 +99,7 @@ const MarketPageHeadline = async() => {
           </div>
         </div>
 
-      </div>
+      </div>**/}
     </div>
   )
 }
