@@ -82,7 +82,7 @@ const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
 
 //API FOR GLOBAL MARKET DATA
-{/**export async function getGlobalData() {
+export async function getGlobalData() {
 
   const global_data = {
     data: {
@@ -110,12 +110,26 @@ export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, 
     const globalData:GlobalCryptoTypes = await res.json();
     return globalData;
   } catch {
-    return global_data
+    return {data: {
+    active_cryptocurrencies: 0,
+    markets: 1,
+    total_market_cap: {
+      usd: 0
+    },
+    total_volume: {
+      usd: 0
+    },
+    market_cap_percentage: {
+      btc: 0,
+      eth: 0
+    },
+    market_cap_change_percentage_24h_usd: 0,
+    }}
   }
-}**/}
+}
 
 
-export async function getGlobalData() {
+{/**export async function getGlobalData() {
   const res = await fetch(
     global_url,
     {
@@ -136,7 +150,7 @@ export async function getGlobalData() {
   }
 
   return res.json();
-}
+}**/}
 
 
 
