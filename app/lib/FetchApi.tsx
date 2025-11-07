@@ -82,7 +82,7 @@ const cache: Cache = {cache: "no-store"}
 export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, body: undefined, ...cache};
 
 //API FOR GLOBAL MARKET DATA
-export async function getGlobalData() {
+{/**export async function getGlobalData() {
 
   const global_data = {
     data: {
@@ -112,7 +112,26 @@ export async function getGlobalData() {
   } catch {
     return global_data
   }
+}**/}
+
+
+export async function getGlobalData() {
+  const res = await fetch(global_url, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    console.error('CoinGecko global API error:', res.status);
+    return null; // fallback UI below
+  }
+
+  const data = await res.json();
+  return data
+  //return json.data.active_cryptocurrencies as number;
 }
+
+
+
 
 
 const crypto: CryptoTypes[] = [

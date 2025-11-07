@@ -45,7 +45,7 @@ const MarketPageHeadline = async() => {
     return global
   }
   if(!global.data.active_cryptocurrencies) {
-    return global.data.active_cryptocurrencies
+    return global.data.active_cryptocurrencies = 0
   }
   
     
