@@ -49,6 +49,7 @@ export interface CoinIdTypes {
 }
 
 export interface GlobalCryptoTypes {
+   data: {
     active_cryptocurrencies: number,
     markets: number,
     total_market_cap: {
@@ -62,6 +63,7 @@ export interface GlobalCryptoTypes {
       eth: number
     }
     market_cap_change_percentage_24h_usd: number,
+   }
 }
 
 type Cache = { cache: 'no-store' }
@@ -81,10 +83,10 @@ export const options = {method: 'GET', headers: {'x-cg-demo-api-key': api_key}, 
 
 //API FOR GLOBAL MARKET DATA
 export async function getGlobalData() {
-  // During build, skip real API
-  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
-    return { 
-      active_cryptocurrencies: 0,
+
+  const globalMarket: GlobalCryptoTypes = {
+    data: {
+    active_cryptocurrencies: 0,
     markets: 1,
     total_market_cap: {
       usd: 0
@@ -97,15 +99,20 @@ export async function getGlobalData() {
       eth: 0
     },
     market_cap_change_percentage_24h_usd: 0,
-    };
+    }
+  }
+
+  // During build, skip real API
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE === 'phase-production-build') {
+    return globalMarket;
   }
 
   try {
      const res = await fetch(global_url, options);
-    const globalData = await res.json();
-    return globalData.data;
-  } catch(error) {
-    console.log(error)
+    const globalData: GlobalCryptoTypes = await res.json();
+    return globalData;
+  } catch {
+    return globalMarket 
   }
 }
 
@@ -154,5 +161,17 @@ export async function getCryptoData() {
     console.log(error)
   }
   
+}
+
+//FETCH CRYPTO ID DATA
+export async function getCryptoId(id: string) {
+  const crypto_id_url = `https://api.coingecko.com/api/v3/coins/${id}`;
+  try {
+     const response = await fetch(crypto_id_url, options);
+     const data: CoinIdTypes = await response.json();
+     return data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
