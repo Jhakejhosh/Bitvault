@@ -1,6 +1,9 @@
+import BackButton from '@/app/lib/BackButton'
 import { getCryptoId } from '@/app/lib/FetchApi'
+import TextTruncate from '@/app/lib/TextTruncate'
 import Chart from '@/app/ui/Chart'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = async({params,}:{
@@ -11,7 +14,7 @@ const page = async({params,}:{
     const crypto_id = await getCryptoId(cryptoId)
 
     if(!crypto_id) {
-      return crypto_id
+      return <div>No data....</div>
     }
     
     const price = Math.floor(crypto_id.market_data.current_price.usd).toLocaleString();
@@ -28,17 +31,17 @@ const page = async({params,}:{
 
   return (
     <div className='pt-26 md:pt-30 text-white relative px-4 pb-12 md:px-30 lg:px-40'>
-      <div>{crypto_id?.name}</div>
+      <BackButton/>
       <div className='flex justify-center items-center'>
         <div className='md:bg-black/2 md:border-1 border-gray-700 md:gap-4 gap-8
           rounded-md flex justify-between items-center-safe py-2 px-2 md:flex-row flex-col'>
-          <div className='flex gap-2 items-center md:border-r-2 md:border-gray-700 px-4'>
+          <div className='flex gap-5 md:gap-3 items-center md:border-r-2 md:border-gray-700 px-4'>
             <figure>
               <Image src={crypto_id.image.small} width={30} alt={crypto_id.name} height={20}/>
             </figure>
             <div>
               <h1 className='flex items-center text-[20px] font-semibold
-              gap-1'>{crypto_id.name}<p className='text-gray-400'>{crypto_id.symbol.toLocaleUpperCase()}</p></h1>
+              gap-1'>{crypto_id.name}<p className='text-gray-400 font-light'>{crypto_id.symbol.toLocaleUpperCase()}</p></h1>
               <p>${price}</p>
             </div>
           </div>
@@ -110,7 +113,17 @@ const page = async({params,}:{
           <Chart/>
         </div>
       </div>
-      <div></div>
+      <div className='relative'>
+        <h1 className='md:text-center text-[20px] font-semibold pb-3
+        text-white/80'>About {crypto_id?.name} ({crypto_id?.symbol.toLocaleUpperCase()})</h1>
+        <TextTruncate text={crypto_id?.description.en ? crypto_id?.description.en : `No description. You can visit coingecko to know more about ${crypto_id?.name}`}/>
+        <div className='py-6 text-sm flex justify-center items-center gap-4'>
+          <Link href={crypto_id?.links.homepage[0]} className='text-white/80 bg-gray-800 px-6 py-2
+          rounded-sm hover:text-white'>{crypto_id?.name.toLocaleLowerCase()}.org</Link>
+          <Link href={crypto_id?.links.whitepaper} className='text-white/80 bg-gray-800 px-6 py-2
+          rounded-sm hover:text-white'>Whitepaper</Link>
+        </div>
+      </div>
     </div>
   )
 }

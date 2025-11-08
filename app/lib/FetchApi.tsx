@@ -45,6 +45,13 @@ export interface CoinIdTypes {
   },
   image:{
     small: string
+  },
+  description: {
+    en: string
+  },
+  links: {
+    homepage: string[],
+    whitepaper: string,
   }
 }
 
