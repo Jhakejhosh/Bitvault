@@ -22,10 +22,30 @@ export interface CoinIdTypes {
   market_data: {
     current_price: {
       usd: number
-    }
+    },
+    market_cap_change_percentage_24h: number,
+    high_24h: {
+      usd: number
+    },
+    low_24h: {
+      usd: number
+    },
+    market_cap: {
+      usd: number
+    },
+    fully_diluted_valuation: {
+      usd: number
+    }, 
+    total_volume: {
+      usd: number
+    },
+    total_supply: number,
+    max_supply: number,
+    circulating_supply: number
   },
-  price_change_percentage_24h: number,
-  
+  image:{
+    small: string
+  }
 }
 
 export interface GlobalCryptoTypes {
