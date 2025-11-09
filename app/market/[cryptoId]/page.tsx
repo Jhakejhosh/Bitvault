@@ -76,7 +76,10 @@ const page = async({params,}:{
         </div>
         
       </div>
-      <div className='flex md:flex-row flex-col justify-between gap-6 py-8'>
+
+      {/**SECTION FOR KEY CRYPTO METRICS AND CHART */}
+      <div className='flex md:flex-row flex-col-reverse justify-between gap-6 py-8'>
+        {/**KEY METRIC */}
         <div className='w-full md:w-[75%] lg:w-[70%] md:border-1 border-gray-700 rounded-md lg:px-4 py-4 md:px-2'>
           <div className='text-sm flex justify-between items-center md:text-[12px] lg:text-sm
            border-b-1 border-gray-700 py-4'>
@@ -109,10 +112,36 @@ const page = async({params,}:{
             <p className='text-right'>${max}</p>
           </div>
         </div>
+
+        {/**CHART SECTION DISPLAY */}
         <div className='w-full'>
           <Chart/>
+          
+          {/***SECTION FOR DISPLAYING PERCENTAGE CHANGES */}
+          <div className='overflow-x-auto relative py-3'>
+            <table className='min-w-full text-[12px] md:text-sm border-1 border-gray-800 rounded-md'>
+              <thead className='bg-gray-800'>
+                <tr>
+                  <th className='py-2 text-white/80'>24h</th>
+                  <th className='py-2 text-white/80'>7d</th>
+                  <th className='py-2 text-white/80'>30d</th>
+                  <th className='py-2 text-white/80'>1y</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className={`text-center py-2 ${crypto_id?.market_data.price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500' }`}>{crypto_id?.market_data.price_change_percentage_24h.toFixed(2)}%</td>
+                  <td className={`text-center py-2 ${crypto_id?.market_data.price_change_percentage_7d < 0 ? 'text-red-500' : 'text-green-500' }`}>{crypto_id?.market_data.price_change_percentage_7d.toFixed(2)}%</td>
+                  <td className={`text-center py-2 ${crypto_id?.market_data.price_change_percentage_30d < 0 ? 'text-red-500' : 'text-green-500' }`}>{crypto_id?.market_data.price_change_percentage_30d.toFixed(2)}%</td>
+                  <td className={`text-center py-2 ${crypto_id?.market_data.price_change_percentage_1y < 0 ? 'text-red-500' : 'text-green-500' }`}>{crypto_id?.market_data.price_change_percentage_1y.toFixed(2)}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
+
+      {/**SECTION FOR CTYPTO INFO (ABOUT) */}
       <div className='relative'>
         <h1 className='md:text-center text-[20px] font-semibold pb-3
         text-white/80'>About {crypto_id?.name} ({crypto_id?.symbol.toLocaleUpperCase()})</h1>
