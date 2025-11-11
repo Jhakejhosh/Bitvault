@@ -1,3 +1,4 @@
+
 import BackButton from '@/app/lib/BackButton'
 import { getCryptoId } from '@/app/lib/FetchApi'
 import TextTruncate from '@/app/lib/TextTruncate'
@@ -115,7 +116,9 @@ const page = async({params,}:{
 
         {/**CHART SECTION DISPLAY */}
         <div className='w-full'>
-          <Chart/>
+          <div className="max-w-5xl mx-auto">
+            <Chart id={cryptoId}/>
+          </div>
           
           {/***SECTION FOR DISPLAYING PERCENTAGE CHANGES */}
           <div className='overflow-x-auto relative py-3'>
