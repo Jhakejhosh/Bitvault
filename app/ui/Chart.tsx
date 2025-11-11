@@ -14,6 +14,7 @@ import {
   TimeScale
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import type { ChartOptions } from 'chart.js';
 import { useCoinOHLC } from '../lib/hooks/useCoinOHLC'
 import GoogleChart from './GoogleChart';
 import { Line } from 'react-chartjs-2';
@@ -61,7 +62,7 @@ const Chart = (Id: coinId) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -82,8 +83,8 @@ const Chart = (Id: coinId) => {
     },
     scales: {
       x: {
-        type: 'time' as const,
-        time: { unit: 'day' },
+        type: 'time',
+        time: { unit: 'day' as const },
         title: { display: true, text: 'Date' },
       },
       y: {
