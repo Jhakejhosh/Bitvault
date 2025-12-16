@@ -56,7 +56,7 @@ const Chart = (Id: coinId) => {
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         fill: true,
         tension: 0.4,                 // smooth curve
-        pointRadius: 3,
+        pointRadius: 1,
         pointHoverRadius: 6,
       },
     ],
