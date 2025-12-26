@@ -16,7 +16,7 @@ const CryptoMarquee = async() => {
         {
             cryptos?.map(crypto => {
                 const {id, symbol, price_change_percentage_24h, current_price} = crypto;
-                const percentage_change = price_change_percentage_24h&&price_change_percentage_24h.toFixed(1);
+                const percentage_change = price_change_percentage_24h&&price_change_percentage_24h?.toFixed(1);
                 return (
                     <div key={id} className='mx-4 flex items-center gap-2'>
                         <p>{symbol.toLocaleUpperCase()}</p>
