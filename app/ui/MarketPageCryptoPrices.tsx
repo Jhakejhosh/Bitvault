@@ -72,7 +72,7 @@ const MarketPageCryptoPrices = async() => {
                                     <td className={`text-right px-4 flex items-center justify-end
                                         ${price_change_percentage_24h < 0 ? 'text-red-500' : 'text-green-500' } py-6`}>
                                         <span>{price_change_percentage_24h < 0 ? <IoMdArrowDropdown/> : <IoMdArrowDropup/> }</span>
-                                        <span>{price_change_percentage_24h&&price_change_percentage_24h.toFixed(1)}%</span>
+                                        <span>{(price_change_percentage_24h ?? 0).toFixed(1)}%</span>
                                     </td>
                                     <td className='text-right px-4'>${market_cap.toLocaleString()}</td>
                                     <td className='text-right px-4'>${total_volume.toLocaleString()}</td>

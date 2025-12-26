@@ -51,7 +51,7 @@ const page = async({params,}:{
             <div className='text-[12px]'>
               <p className='text-gray-500 font-semibold'>24h Change</p>
               <p className={`${percent < 0 ? 'text-red-500' : 'text-green-500' } text-end pt-2`}>
-                {percent?.toFixed(2)}%
+                {(percent??0).toFixed(2)}%
               </p>
             </div>
             <div className='text-[12px]'>
@@ -69,7 +69,7 @@ const page = async({params,}:{
             <div className='text-[12px]'>
               <p className='text-gray-500 font-semibold'>24h Volume</p>
               <p className={`${percent < 0 ? 'text-red-500' : 'text-green-500' } text-end pt-2`}>
-                {percent?.toFixed(2)}%
+                {(percent??0).toFixed(2)}%
               </p>
             </div>
           </div>

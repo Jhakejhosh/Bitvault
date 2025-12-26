@@ -63,7 +63,7 @@ const MarketPageHeadline = async() => {
           <div className='text-gray-400 flex items-center gap-2'>
             Market Cap 
             <p className={`${cap_percent < 0 ? 'text-red-500' : 'text-green-500' } flex items-center`}>
-              {cap_percent.toFixed(1)}%
+              {(cap_percent ?? 0).toFixed(1)}%
               <span>{cap_percent < 0 ? <MdOutlineArrowDropDown/> : <MdOutlineArrowDropUp/> }</span>
             </p>
           </div>
